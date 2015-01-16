@@ -74,7 +74,10 @@ public class WeatherFragment extends Fragment {
     private void setupRefreshStream() {
         WeatherViewModel weatherViewModel = new WeatherViewModel();
 
+        //set stream to handle in vm
         weatherViewModel.setRefreshSignal(refreshPublisher);
+
+        //configure how to handle stream from vm
         mCompositeSubscription.add(
                 weatherViewModel.whenGetCurrentWeather()
                         .observeOn(AndroidSchedulers.mainThread())
